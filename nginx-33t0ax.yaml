@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-33t0ax
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-33t0ax
+  namespace: my-nginx-33t0ax
+  labels:
+    name: nginx-33t0ax
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-33t0ax
+  template:
+    metadata:
+      namespace: my-nginx-33t0ax
+      labels:
+        name: nginx-33t0ax
+    spec:
+      containers:
+      - name: nginx-33t0ax
+        image: nginx
+        ports:
+        - containerPort: 80
+
